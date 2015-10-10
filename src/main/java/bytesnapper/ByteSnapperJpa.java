@@ -1,5 +1,6 @@
 package bytesnapper;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -37,6 +38,7 @@ public class ByteSnapperJpa {
 		try {
 			this.getTranstAction().begin();
 			entityManager.persist(empToSave);
+			this.getEntityManager().merge(empToSave);
 			this.getTranstAction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,6 +49,7 @@ public class ByteSnapperJpa {
 		try {
 			this.getTranstAction().begin();
 			entityManager.persist(deptToSave);
+			this.getEntityManager().merge(deptToSave);
 			this.getTranstAction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -57,6 +60,17 @@ public class ByteSnapperJpa {
 		Employee emp = new Employee();
 		emp.setName(name);
 		emp.setDept(dept);
+		return emp;
+
+	}
+	
+	
+
+	public Employee createEmployee(String name, Department dept,Date hiringDate) {
+		Employee emp = new Employee();
+		emp.setName(name);
+		emp.setDept(dept);
+		emp.setHiringDate(hiringDate);
 		return emp;
 
 	}
