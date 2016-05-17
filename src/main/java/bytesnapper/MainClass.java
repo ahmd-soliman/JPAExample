@@ -51,7 +51,7 @@ public class MainClass {
 		System.out.println("\n -----------------------------------------------");
 
 		Query stringListResult = jpaHandler.getEntityManager().createNativeQuery(
-				"SELECT E.EMP_NAME FROM EMP E,DEPT D WHERE E.DEPT_ID=D.DEPT_ID AND E.DEPT_ID");
+				"SELECT E.EMP_NAME FROM EMP E,DEPT D WHERE E.DEPT_ID=D.DEPT_ID ");
 
 		List<String> empNames = stringListResult.getResultList();
 
